@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main-container">
+    <form method="post" class="todo-form">
+        {% csrf_token %}
+        {{ form.description }}
+        <button class="submit-button">Add Todo</button>
+    </form>
+    <ul class="main-list-container">
+        {% for todo in todos %}
+            <li class="list {% if todo.is_done %} gray-background-two {% endif %}">
+                {{ todo.description }}
+                <div class="icons">
+                    <a href="{% url 'toggle-todo' todo.id %}">
+                        {% if todo.is_done %}
+                            <i class="far fa-check-square"></i>
+                        {% else %}
+                            <i class="far fa-square"></i>
+                        {% endif %}
+                    </a>
+                </div>
+            </li>
+        {% empty %}
+            <li class="list gray-background">🥺 Sem to-do por enquanto.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock content %}
