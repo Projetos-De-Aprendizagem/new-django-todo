@@ -109,3 +109,14 @@ ul.main-list-container {
     margin-right: 10px;
     color: #7634d9;
 }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+}
+
+.pagination-link {
+    margin:0 10px;
+}
